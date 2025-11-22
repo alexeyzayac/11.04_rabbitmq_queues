@@ -1,0 +1,28 @@
+###########
+# Задание 1
+###########
+
+# Обновление системы и установка зависимостей
+1. sudo su
+2. apt update && apt full-upgrade -y && apt full-upgrade -y && apt autoremove -y && apt purge ~c -y
+3. apt install curl wget gnupg apt-transport-https software-properties-common net-tools google-compute-engine-oslogin -y
+
+# Установка RabbitMQ
+4. curl -1sLf "https://keys.openpgp.org/vks/v1/by-fingerprint/0A9AF2115F4687BD29803A206B73A36E6026DFCA" | sudo gpg --dearmor | sudo tee /usr/share/keyrings/rabbitmq.asc > /dev/null
+5. echo "deb [signed-by=/usr/share/keyrings/rabbitmq.asc] https://ppa1.rabbitmq.com/rabbitmq/rabbitmq-server/ubuntu jammy main" | sudo tee /etc/apt/sources.list.d/rabbitmq.list
+6. sudo apt update
+7. sudo apt install -y rabbitmq-server
+
+# Запуск и настройка RabbitMQ. Включение Management Plugin
+8. systemctl start --now rabbitmq-server && systemctl status rabbitmq-server
+9. sudo rabbitmq-plugins enable rabbitmq_management
+10. sudo systemctl restart rabbitmq-server
+
+# Создание пользователя для доступа
+11. rabbitmqctl add_user admin 12345
+12. rabbitmqctl set_user_tags admin administrator
+13. rabbitmqctl set_permissions -p / admin ".*" ".*" ".*"
+
+###########
+# Задание 2
+###########
