@@ -83,3 +83,10 @@
 
 #### Решение:
 
+![img](img/screenshot_4.png)
+
+![img](img/screenshot_5.png)
+
+![img](img/screenshot_6.png)
+
+![img](img/screenshot_7.png)

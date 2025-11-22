@@ -39,4 +39,19 @@
 # Задание 3
 ###########
 
-20. 
+20. sudo nano /etc/hosts
+
+# На первой машине:
+21. cat /var/lib/rabbitmq/.erlang.cookie 
+
+# На второй машине:
+22. systemctl stop rabbitmq-server
+23. nano /var/lib/rabbitmq/.erlang.cookie 
+24. systemctl start rabbitmq-server
+25. rabbitmqctl stop_app
+26. rabbitmqctl join_cluster rabbit@compute-vm-1
+27. rabbitmqctl start_app
+28. rabbitmqctl set_policy ha-all ".*" '{"ha-mode":"all"}'
+
+# На обоих машиах: 
+29. rabbitmqctl cluster_status
